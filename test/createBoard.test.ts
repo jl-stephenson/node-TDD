@@ -5,6 +5,9 @@ describe("createBoard", () => {
     const board = createBoard();
 
     expect(board).toHaveLength(3);
-    expect(board[0]).toEqual(["", "", ""]);
+    board.forEach((row) => {
+      expect(row).toHaveLength(3);
+      row.forEach((cell) => expect(cell).toBe(" "));
+    });
   });
 });
