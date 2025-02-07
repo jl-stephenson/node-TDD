@@ -3,7 +3,11 @@ export const placeSymbol = (
   marker: string,
   row: number,
   column: number
-): string[][] => {
+): string[][] | string => {
+  if (row < 1 || row > board.length) {
+    return "Please enter a valid row";
+  }
+
   const updatedBoard = board.map((row) => [...row]);
 
   updatedBoard[row - 1][column - 1] = marker;
