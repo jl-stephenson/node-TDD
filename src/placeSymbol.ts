@@ -4,7 +4,7 @@ export const placeSymbol = (
   row: number,
   column: number
 ): string[][] | string => {
-  if (row < 1 || row > board.length) {
+  if (!isInBounds(board, row, column)) {
     return "Please enter a valid row";
   }
 
@@ -14,3 +14,13 @@ export const placeSymbol = (
 
   return updatedBoard;
 };
+
+export function isInBounds(board: string[][], row: number, column: number) {
+  if (row < 1 || row > board.length || column < 1 || column > board[0].length) {
+    return false;
+  } else if (!Number.isInteger(row) || !Number.isInteger(column)) {
+    return false;
+  } else {
+    return true;
+  }
+}
